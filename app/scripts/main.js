@@ -22,33 +22,72 @@ var myTodo = {
       console.log('submit');
       var newTask = {
         task: $(".task").val(),
+        active: true,
 
       }
       myTodo.createTask(newTask);
+      $('.task').val('');
 
     });
 
-    $('.form_container').on('click', '#X', function () {
+    $('.form_container').on('click', '.X', function () {
       var taskId = $(this).closest('li').data('taskid');
       console.log(taskId);
-
       myTodo.deleteTask(taskId);
 
     });
 
-    $('.form_container').on('click', '#check', function () {
+    $('.form_container').on('click', '.check', function () {
       console.log('click');
       $(this).closest('p').toggleClass('done');
+      $(this).closest('li').toggleClass('checked');
 
     });
 
-    $('.form_container').on('dblclick', 'span', function () {
+    $('.form_container').on('dblclick', 'li', function () {
       console.log("double click");
-      $(this).addClass("hide");
-      $(this).children("span").addClass("edit");
+      $(this).children('p').children('input').show();
+      $(this).children('p').children('button').show();
+      $(this).children('p').children('span').hide();
     });
 
+    $('.todo_list').on('click', 'button', function (event) {
+      event.preventDefault();
+      console.log('update');
+      var taskId = $(this).parent('p').parent('li').data("taskid");
+        var updatedTask = {
+          task: $(this).parent('p').find('.edit').val(),
+          active: true,
+        };
+        myTodo.updatedTask(taskId, updatedTask);
 
+    $(this).parent('input').addClass("hide");
+
+    });
+
+    $('.bottom-bar').on('click', '#completed', function(event){
+      event.preventDefault();
+      console.log('click');
+      $('.todo_list').children('.checked').removeClass('active').removeClass('hide');
+      $('.todo_list').children('.active').addClass('hide');
+    });
+    $('.bottom-bar').on('click', '#active', function(event){
+      event.preventDefault();
+      $('.todo_list').children('.checked').addClass('hide');
+      $('.todo_list').children('.active').removeClass('hide');
+
+    });
+
+    $('.bottom-bar').on('click', '#all', function(event) {
+      event.preventDefault();
+      $('.todo_list').children('li').removeClass('hide');
+    });
+
+    // $('.bottom-bar').on('click', 'button', function (event) {
+    //   event.preventDefault();
+    // //   if()
+    // //
+    // // });
 
   },
 
@@ -99,21 +138,20 @@ var myTodo = {
     },
 
 
-    updateTask: function (taskId, updatedTask) {
+    updatedTask: function (taskId, updatedTask) {
 
       $.ajax({
       url: myTodo.url + "/" + taskId,
       type: "PUT",
       data: updatedTask,
       success: function (response) {
-        // something goes here
         console.log(response);
         myTodo.getTasks();
       }
     });
 
-
-
     }
 
 };
+
+// <input type=\"text\" class=\"edit\" name=\"task\" placeholder=\"<%=element.task%>\">

@@ -27,14 +27,11 @@ h1 {
 #main_task {
   background-color: #f5f5f5;
   font-size: 20px;
-  width: 553px;
+  width: 483px;
   font-style: italic;
-  font-weight: lighter;
+  font-weight: normal;
   padding: 10px 0px 10px 40px;
-  border-left: none;
-  border-bottom: none;
-  border-right: none;
-
+  border: none;
 }
 
 .todo_list {
@@ -59,16 +56,16 @@ h1 {
 }
 
 
-#X, #check {
+.X, .check {
   cursor: pointer;
   display: inline-block;
 }
 
-#X {
+.X {
   float: right;
 }
 
-#check{
+.check{
   margin-right: 10px;
   float: left;
 }
@@ -82,6 +79,11 @@ h1 {
   p, ul, li, a, button{
   display: inline-block;
   color: grey;
+  }
+
+  a:hover, button:hover {
+    color: blue;
+
   }
 
   ul {
@@ -105,9 +107,9 @@ h1 {
   }
 }
 
-/* .edit {
+.edit {
   display: inline;
-  width: 262px;
+  width: 150px;
   top: 0px;
   left: 49px;
   border-top: none;
@@ -116,4 +118,4 @@ h1 {
 
 .hide {
   display: none;
-} */
+}
