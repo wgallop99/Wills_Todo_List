@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>willstodo</title>
+    <link rel="stylesheet" href="images/octicons (1)/octicons.css">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="../bower_components/normalize-css/normalize.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+
+  </head>
+  <body>
+
+
+
+    <div class="container">
+      <h1>todos</h1>
+
+      <div class="form_container">
+        <form class="make_list">
+
+          <img src="images/inputimg.png">
+          <input type="text" id="main_task" class="task" name="task" placeholder="What needs to be done?" required>
+          <ul class="todo_list">
+          <!-- li is entered here  -->
+          </ul>
+        </form>
+        <div class="bottom-bar">
+          <p>"" item left</p>
+          <ul>
+            <li><a href="#">All</a></li>
+            <li><a href="#">Active</a></li>
+            <li><a href="#">Completed</a></li>
+          </ul>
+          <button>Clear Completed (i)</button>
+        </div>
+        <p>Double-Click to edit a todo</p>
+      </div>
+    </div>
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../bower_components/underscore/underscore.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+        <!-- build:js scripts/main.js -->
+        <script src="scripts/template.js"></script>
+        <script src="scripts/main.js"></script>
+        <!-- endbuild -->
+</body>
+</html>
